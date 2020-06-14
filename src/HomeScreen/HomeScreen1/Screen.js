@@ -9,7 +9,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Feather from 'react-native-vector-icons/Feather';
 
-import TabScreen1 from './TabScreen/TabScreen1';
+import Chats from './TabScreen/Chats';
 import TabScreen2 from './TabScreen/TabScreen2';
 import themeStyle from '../../themes/theme.style';
 
@@ -26,7 +26,7 @@ const HomeScreen1 = () => {
                         let iconName;
                         let color;
             
-                        if (route.name === 'TabScreen1') {
+                        if (route.name === 'Chats') {
                             iconName = 'user';
                             color = focused
                                 ? themeStyle.PRIMARY_COLOR_MED
@@ -47,7 +47,7 @@ const HomeScreen1 = () => {
                     inactiveTintColor: 'gray',
                 }}
             >
-                <Tab.Screen options={{title:'Chat'}} name="TabScreen1" component={TabScreen1} />
+                <Tab.Screen options={{title:'Chats'}} name="Chats" component={Chats} />
                 <Tab.Screen options={{title:'Groups'}} name="TabScreen2" component={TabScreen2} />
             </Tab.Navigator>
         </NavigationContainer>
