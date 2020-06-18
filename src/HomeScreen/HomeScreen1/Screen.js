@@ -6,50 +6,31 @@ import {
 } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+
 import Feather from 'react-native-vector-icons/Feather';
 
-import Chats from './TabScreen/Chats';
-import TabScreen2 from './TabScreen/TabScreen2';
+import BaseTabScreen from './TabScreen/BaseTabScreen';
+import ChatScreen from './ChatScreen/Screen';
+
 import themeStyle from '../../themes/theme.style';
 
-const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
-const HomeScreen1 = () => {
+const HomeScreen1 = ({navigation}) => {
     return(
         <NavigationContainer
             independent={true}
         >
-            <Tab.Navigator
-                screenOptions={({ route }) => ({
-                    tabBarIcon: ({ focused, size }) => {
-                        let iconName;
-                        let color;
-            
-                        if (route.name === 'Chats') {
-                            iconName = 'user';
-                            color = focused
-                                ? themeStyle.PRIMARY_COLOR_MED
-                                : themeStyle.PRIMARY_COLOR_DARK;
-                        } else if (route.name === 'TabScreen2') {
-                            iconName = 'users';
-                            color = focused
-                                ? themeStyle.PRIMARY_COLOR_MED
-                                : themeStyle.PRIMARY_COLOR_DARK;
-                        }
-            
-                        // You can return any component that you like here!
-                        return <Feather name={iconName} size={30} color={color} />;
-                    },
-                })}
-                tabBarOptions={{
-                    activeTintColor: 'tomato',
-                    inactiveTintColor: 'gray',
+            <Stack.Navigator
+                initialRouteName="BaseTabScreen"
+                screenOptions={{
+                    headerShown: false
                 }}
             >
-                <Tab.Screen options={{title:'Chats'}} name="Chats" component={Chats} />
-                <Tab.Screen options={{title:'Groups'}} name="TabScreen2" component={TabScreen2} />
-            </Tab.Navigator>
+                <Stack.Screen name="BaseTabScreen" component={BaseTabScreen} navigation={navigation}/>
+                <Stack.Screen name="ChatScreen" component={ChatScreen} navigation={navigation}/>
+            </Stack.Navigator>
         </NavigationContainer>
     );
 }

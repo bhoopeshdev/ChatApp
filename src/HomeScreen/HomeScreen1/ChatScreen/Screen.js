@@ -5,7 +5,7 @@ import {
     View
 } from 'react-native';
 
-const HomeScreen2 = () => {
+const ChatScreen = () => {
     return(
         <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
             <Text> Home Screen 2</Text>
@@ -13,4 +13,4 @@ const HomeScreen2 = () => {
     );
 }
 
-module.exports = HomeScreen2;
+module.exports = ChatScreen;

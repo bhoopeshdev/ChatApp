@@ -8,8 +8,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import HomeScreen1 from './HomeScreen1/Screen';
-import HomeScreen2 from './HomeScreen2/Screen';
+import ChatScreen from './HomeScreen1/ChatScreen/Screen';
 
+import CustomDrawer from './CustomDrawer/CustomDrawer';
 
 const Drawer = createDrawerNavigator();
 
@@ -18,9 +19,11 @@ const App = ({navigation}) => {
         <NavigationContainer
             independent={true}
         >
-            <Drawer.Navigator initialRouteName="HomeScreen1">
-                <Drawer.Screen name="HomeScreen1" component={HomeScreen1} />
-                <Drawer.Screen name="HomeScreen2" component={HomeScreen2} />
+            <Drawer.Navigator initialRouteName="HomeScreen1"
+                drawerContent={props => <CustomDrawer {...props}/>}
+            >
+                <Drawer.Screen name="HomeScreen1" component={HomeScreen1} navigation={navigation}/>
+                <Drawer.Screen name="ChatScreen" component={ChatScreen} navigation={navigation}/>
             </Drawer.Navigator>
         </NavigationContainer>
     );
